@@ -24,6 +24,7 @@
 		834D2C3020F9322000FBE120 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D2C2E20F9322000FBE120 /* Task+CoreDataClass.swift */; };
 		834D2C3120F9322000FBE120 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D2C2F20F9322000FBE120 /* Task+CoreDataProperties.swift */; };
 		834D2C3320F9538800FBE120 /* TaskViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D2C3220F9538800FBE120 /* TaskViewOutput.swift */; };
+		83CCC88E20FA3D9E00E81B37 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CCC88D20FA3D9E00E81B37 /* DateFormat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		834D2C2E20F9322000FBE120 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		834D2C2F20F9322000FBE120 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		834D2C3220F9538800FBE120 /* TaskViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewOutput.swift; sourceTree = "<group>"; };
+		83CCC88D20FA3D9E00E81B37 /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				834D2C2E20F9322000FBE120 /* Task+CoreDataClass.swift */,
 				834D2C2F20F9322000FBE120 /* Task+CoreDataProperties.swift */,
 				830CE61520F8D5CB00FC83FD /* TaskStatus.swift */,
+				83CCC88D20FA3D9E00E81B37 /* DateFormat.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				830CE61820F8D6BD00FC83FD /* Extensions.swift in Sources */,
 				830CE61320F8D22300FC83FD /* TaskCell.swift in Sources */,
 				830CE61620F8D5CB00FC83FD /* TaskStatus.swift in Sources */,
+				83CCC88E20FA3D9E00E81B37 /* DateFormat.swift in Sources */,
 				830CE5FA20F8CB8B00FC83FD /* TaskTracker.xcdatamodeld in Sources */,
 				830CE5F420F8CB8B00FC83FD /* TasksViewController.swift in Sources */,
 				830CE5F220F8CB8B00FC83FD /* AppDelegate.swift in Sources */,

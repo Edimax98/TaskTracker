@@ -11,6 +11,11 @@ import UIKit
 class TasksDataDisplayManager: NSObject {
 	
 	private var tasks = [Task]()
+	private let dateFormatter: DateFormatter = {
+		let df = DateFormatter()
+		df.dateFormat = DateFormat.dateWithoutTimeZone.description
+		return df
+	}()
 	
 	func setTasks(_ tasks: [Task]) {
 		self.tasks = tasks
@@ -38,7 +43,7 @@ extension TasksDataDisplayManager: UITableViewDataSource {
 		
 		cell.taskTitle.text = task.title
 		cell.taskStatus.text = task.status.description
-		cell.taskDate.text = task.date.description
+		cell.taskDate.text = dateFormatter.string(from: task.date)
 		
 		return cell
 	}

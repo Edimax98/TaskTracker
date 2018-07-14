@@ -81,6 +81,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2dt-Rb-2M0">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>
                                                     <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
                                                     <connections>
                                                         <action selector="textFieldChanged:" destination="ZQV-mi-j4k" eventType="editingChanged" id="Sc1-a1-CjK"/>
@@ -109,15 +110,16 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A5e-iD-5f0">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
                                                     <connections>
-                                                        <action selector="textFieldChanged:" destination="ZQV-mi-j4k" eventType="editingDidEnd" id="suk-LU-dNg"/>
+                                                        <action selector="dateTextFieldEditingBegan:" destination="ZQV-mi-j4k" eventType="editingDidBegin" id="ihZ-gt-SUb"/>
+                                                        <action selector="textFieldChanged:" destination="ZQV-mi-j4k" eventType="editingDidEnd" id="AoN-B6-ETf"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="A5e-iD-5f0" firstAttribute="leading" secondItem="uTz-nx-caE" secondAttribute="leading" id="5ik-Lk-Rkf"/>
-                                                <constraint firstAttribute="bottom" secondItem="A5e-iD-5f0" secondAttribute="bottom" constant="1.5" id="8pn-bX-MP8"/>
                                                 <constraint firstAttribute="trailing" secondItem="A5e-iD-5f0" secondAttribute="trailing" id="Mtp-Ca-3TE"/>
                                                 <constraint firstItem="A5e-iD-5f0" firstAttribute="top" secondItem="uTz-nx-caE" secondAttribute="top" id="mKH-Yc-LfW"/>
                                                 <constraint firstAttribute="bottom" secondItem="A5e-iD-5f0" secondAttribute="bottom" id="ybF-gP-7Vs"/>
@@ -138,9 +140,10 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vsb-K2-UHB">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="136"/>
                                                     <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
                                                     <connections>
-                                                        <action selector="textFieldChanged:" destination="ZQV-mi-j4k" eventType="editingDidEnd" id="hL1-eF-dMK"/>
+                                                        <action selector="textFieldChanged:" destination="ZQV-mi-j4k" eventType="editingChanged" id="Dyf-JH-PbC"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>

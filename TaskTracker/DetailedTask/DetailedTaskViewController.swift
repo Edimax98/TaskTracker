@@ -18,14 +18,29 @@ class DetailedTaskViewController: UITableViewController {
 	private var selectedTask: Task?
 	private var wasAnythingChanged = false
 	
+	private let dateFormatter: DateFormatter = {
+		let df = DateFormatter()
+		df.dateFormat = DateFormat.dateWithoutTimeZone.description
+		return df
+	}()
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		setupView()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+	
+	@IBAction func dateTextFieldEditingBegan(_ sender: UITextField) {
+		
+		let datePickerView: UIDatePicker = UIDatePicker()
+		
+		datePickerView.datePickerMode = .dateAndTime
+		sender.inputView = datePickerView
+		datePickerView.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: .valueChanged)
+	}
+	
+	@objc func datePickerValueChanged(sender: UIDatePicker) {
+		taskDateTextField.text = dateFormatter.string(from: sender.date)
+	}
 	
 	private func setupView() {
 		
@@ -33,7 +48,14 @@ class DetailedTaskViewController: UITableViewController {
 		taskNoteTextField.placeholder = "Enter a note for task".localized
 		taskTitleTextField.placeholder = "Enter a title".localized
 		
+		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+		view.addGestureRecognizer(tapGesture)
+		
 		fillTextFields(with: selectedTask)
+	}
+	
+	@objc func dismissKeyboard() {
+		view.endEditing(true)
 	}
 	
 	private func fillTextFields(with selectedTask: Task?) {
@@ -44,7 +66,7 @@ class DetailedTaskViewController: UITableViewController {
 		}
 		
 		taskTitleTextField.text = task.title
-		taskDateTextField.text = ""// task.date
+		taskDateTextField.text = dateFormatter.string(from: task.date)
 		
 		if let taskNote = task.note {
 			taskNoteTextField.text = taskNote
@@ -62,7 +84,7 @@ class DetailedTaskViewController: UITableViewController {
 	}
 	
 	@IBAction func saveTaskButtonPressed(_ sender: Any) {
-	// Something here i have to change
+		
 		if wasAnythingChanged && isUpdateModeOn() {
 			update(task: selectedTask!)
 		} else {
@@ -88,12 +110,17 @@ class DetailedTaskViewController: UITableViewController {
 			print("Could not cast NSManagedObject to Task")
 			return
 		}
+	
+		guard let formattedDate = dateFormatter.date(from: taskDateTextField.text!) else {
+			print("Could not get formatted date")
+			return
+		}
 		
 		task.title = taskTitleTextField.text!
-		task.date = Date()
 		task.note = taskNoteTextField.text!
 		task.status = .new
-		
+		task.date = formattedDate
+
 		do {
 			try managedContext.save()
 		} catch let error {
@@ -110,8 +137,13 @@ class DetailedTaskViewController: UITableViewController {
 
 		let managedContext = appDelegate.persistentContainer.viewContext
 		
+		guard let formattedDate = dateFormatter.date(from: taskDateTextField.text!) else {
+			print("Could not get formatted date")
+			return
+		}
+		
 		task.title = taskTitleTextField.text!
-		task.date = Date()
+		task.date = formattedDate
 		task.note = taskNoteTextField.text!
 		task.status = .new
 		
