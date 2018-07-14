@@ -14,7 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 
-
+	static func getAppDelegate() -> AppDelegate {
+		
+		guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+			fatalError("Could not cast to AppDelegate")
+		}
+		return appDelegate
+	}
+	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
 		return true

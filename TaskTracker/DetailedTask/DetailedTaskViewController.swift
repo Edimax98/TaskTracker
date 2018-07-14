@@ -1,4 +1,4 @@
-//
+
 //  CreateTaskViewController.swift
 //  TaskTracker
 //
@@ -14,6 +14,7 @@ class DetailedTaskViewController: UITableViewController {
 	@IBOutlet weak var taskTitleTextField: UITextField!
 	@IBOutlet weak var taskDateTextField: UITextField!
 	@IBOutlet weak var taskNoteTextField: UITextField!
+	@IBOutlet weak var changeTaskStatusButton: UIButton!
 	
 	private var selectedTask: Task?
 	private var wasAnythingChanged = false
@@ -29,6 +30,21 @@ class DetailedTaskViewController: UITableViewController {
 		setupView()
     }
 	
+	@IBAction func saveTaskButtonPressed(_ sender: Any) {
+		
+		if !areRequiredTextFieldsFilled() {
+			showErrorAlert(with: nil, message: "Enter title and date".localized)
+			return
+		}
+		
+		if wasAnythingChanged && isUpdateModeOn() {
+			update(task: selectedTask!)
+		} else {
+			saveTask()
+		}
+		dismiss(animated: true, completion: nil)
+	}
+	
 	@IBAction func dateTextFieldEditingBegan(_ sender: UITextField) {
 		
 		let datePickerView: UIDatePicker = UIDatePicker()
@@ -38,11 +54,35 @@ class DetailedTaskViewController: UITableViewController {
 		datePickerView.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: .valueChanged)
 	}
 	
+	@IBAction func exitDetailedTaskView(_ sender: Any) {
+		dismiss(animated: true, completion: nil)
+	}
+	
+	@IBAction func changeTaskStatusButtonPressed(_ sender: Any) {
+		changeTaskStatus()
+		dismiss(animated: true, completion: nil)
+	}
+
+	@IBAction func textFieldChanged(_ sender: Any) {
+		wasAnythingChanged = true
+	}
+	
 	@objc func datePickerValueChanged(sender: UIDatePicker) {
 		taskDateTextField.text = dateFormatter.string(from: sender.date)
 	}
 	
+	@objc func dismissKeyboard() {
+		view.endEditing(true)
+	}
+	
 	private func setupView() {
+		
+		if isUpdateModeOn() && selectedTask!.status != .done {
+			changeTaskStatusButton.isHidden = false
+			setTitleForChangeTaskStatusButton()
+		} else {
+			changeTaskStatusButton.isHidden = true
+		}
 		
 		taskDateTextField.placeholder = "Enter a date".localized
 		taskNoteTextField.placeholder = "Enter a note for task".localized
@@ -54,8 +94,41 @@ class DetailedTaskViewController: UITableViewController {
 		fillTextFields(with: selectedTask)
 	}
 	
-	@objc func dismissKeyboard() {
-		view.endEditing(true)
+	private func changeTaskStatus() {
+		
+		let appDelegate = AppDelegate.getAppDelegate()
+		let managedContext = appDelegate.persistentContainer.viewContext
+
+		switch selectedTask!.status {
+		case .new:
+			selectedTask!.status = .inProcess
+		case .inProcess:
+			selectedTask!.status = .done
+		case .done:
+			break
+		case .undefined:
+			break
+		}
+		
+		do {
+			try managedContext.save()
+		} catch let error {
+			print("Could not save \(error)")
+		}
+	}
+	
+	private func setTitleForChangeTaskStatusButton() {
+		
+		switch selectedTask!.status {
+		case .new:
+			changeTaskStatusButton.setTitle("Start".localized, for: .normal)
+		case .inProcess:
+			changeTaskStatusButton.setTitle("Finish".localized, for: .normal)
+		case .done:
+			break
+		case .undefined:
+			break
+		}
 	}
 	
 	private func fillTextFields(with selectedTask: Task?) {
@@ -75,29 +148,17 @@ class DetailedTaskViewController: UITableViewController {
 		}
 	}
 	
-	func isUpdateModeOn() -> Bool {
+	private func isUpdateModeOn() -> Bool {
 		return selectedTask != nil
 	}
 	
-	@IBAction func exitDetailedTaskView(_ sender: Any) {
-		dismiss(animated: true, completion: nil)
+	private func areRequiredTextFieldsFilled() -> Bool {
+		return taskDateTextField.text != "" && taskTitleTextField.text != ""
 	}
 	
-	@IBAction func saveTaskButtonPressed(_ sender: Any) {
-		
-		if wasAnythingChanged && isUpdateModeOn() {
-			update(task: selectedTask!)
-		} else {
-			saveTask()
-		}
-		dismiss(animated: true, completion: nil)
-	}
-
 	private func saveTask() {
-		guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-			print("Could not cast to AppDelegate")
-			return
-		}
+	
+		let appDelegate = AppDelegate.getAppDelegate()
 		
 		let managedContext = appDelegate.persistentContainer.viewContext
 		
@@ -130,11 +191,8 @@ class DetailedTaskViewController: UITableViewController {
 	
 	private func update(task: Task) {
 		
-		guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-			print("Could not cast to AppDelegate")
-			return
-		}
-
+		let appDelegate = AppDelegate.getAppDelegate()
+		
 		let managedContext = appDelegate.persistentContainer.viewContext
 		
 		guard let formattedDate = dateFormatter.date(from: taskDateTextField.text!) else {
@@ -145,7 +203,6 @@ class DetailedTaskViewController: UITableViewController {
 		task.title = taskTitleTextField.text!
 		task.date = formattedDate
 		task.note = taskNoteTextField.text!
-		task.status = .new
 		
 		do {
 			try managedContext.save()
@@ -155,9 +212,7 @@ class DetailedTaskViewController: UITableViewController {
 		dismiss(animated: true, completion: nil)
 	}
 	
-	@IBAction func textFieldChanged(_ sender: Any) {
-		wasAnythingChanged = true
-	}
+
 }
 
 // MARK: - TaskViewOutput

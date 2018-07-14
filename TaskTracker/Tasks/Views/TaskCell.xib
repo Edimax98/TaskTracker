@@ -26,14 +26,14 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2s-yQ-kht">
-                        <rect key="frame" x="16" y="43" width="238" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2s-yQ-kht">
+                        <rect key="frame" x="16" y="43" width="218" height="17"/>
                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Satus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vl-ns-S6I">
-                        <rect key="frame" x="261.5" y="44" width="38.5" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Satus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vl-ns-S6I">
+                        <rect key="frame" x="242" y="44" width="58" height="17"/>
                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -51,7 +51,6 @@
                     <constraint firstItem="2vl-ns-S6I" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="wEV-YC-fnv"/>
                     <constraint firstItem="2vl-ns-S6I" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="xsR-6p-AgV"/>
                     <constraint firstItem="Hgh-kj-X8k" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="yym-LL-BQR"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="b2s-yQ-kht" secondAttribute="trailing" constant="46" id="z95-Xb-Lyl"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -60,7 +59,7 @@
                 <outlet property="taskStatus" destination="2vl-ns-S6I" id="4X6-HT-sWT"/>
                 <outlet property="taskTitle" destination="Hgh-kj-X8k" id="BTm-EV-htI"/>
             </connections>
-            <point key="canvasLocation" x="-102" y="9"/>
+            <point key="canvasLocation" x="-297" y="-74"/>
         </tableViewCell>
     </objects>
 </document>

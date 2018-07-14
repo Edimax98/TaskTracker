@@ -53,13 +53,9 @@ extension TasksDataDisplayManager: UITableViewDataSource {
 		if editingStyle == .delete {
 			
 			let task = tasks[indexPath.row]
-			
-			guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-				print("Could not cast to AppDelegate")
-				return
-			}
-			
+			let appDelegate = AppDelegate.getAppDelegate()
 			let managedContext = appDelegate.persistentContainer.viewContext
+			
 			managedContext.delete(task)
 			tasks.remove(at: indexPath.row)
 			tableView.deleteRows(at: [indexPath], with: .fade)

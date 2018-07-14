@@ -16,11 +16,10 @@ extension String {
 
 extension UIViewController {
 	
-	func showAlert(with title: String, message: String, actions: String...) {
-		let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		for (_, option) in actions.enumerated() {
-			alertController.addAction(UIAlertAction(title: option, style: .default, handler: nil))
-		}
-		self.present(alertController, animated: true, completion: nil)
+	func showErrorAlert(with title: String?, message: String?) {
+		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		let okAction = UIAlertAction(title: "OK", style: .cancel)
+		alert.addAction(okAction)
+		self.present(alert, animated: true, completion: nil)
 	}
 }

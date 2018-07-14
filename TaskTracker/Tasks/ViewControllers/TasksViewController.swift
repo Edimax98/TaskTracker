@@ -38,12 +38,65 @@ class TasksViewController: UIViewController {
 		tasksTableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: TaskCell.identifier)
 	}
 	
+	@IBAction func filterButtonPressed(_ sender: Any) {
+		
+		let filterActionSheet = UIAlertController(title: "Choose status of task you want to filter".localized, message: nil, preferredStyle: .actionSheet)
+		
+		let filterByNewStatusAction = UIAlertAction(title: "New tasks".localized, style: .default) { (action) in
+			self.filterTask(by: .new)
+		}
+		let filterByInProcessStatusAction = UIAlertAction(title: "Tasks in process".localized, style: .default) { (action) in
+			self.filterTask(by: .inProcess)
+		}
+		let filterByDoneStatusAction = UIAlertAction(title: "Completed tasks".localized, style: .default) { (action) in
+			self.filterTask(by: .done)
+		}
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		
+		filterActionSheet.addAction(filterByNewStatusAction)
+		filterActionSheet.addAction(filterByInProcessStatusAction)
+		filterActionSheet.addAction(filterByDoneStatusAction)
+		filterActionSheet.addAction(cancelAction)
+		
+		self.present(filterActionSheet, animated: true, completion: nil)
+	}
+	
+	private func filterTask(by status: TaskStatus) {
+		
+		var filter: Int16 = 0
+		let appDelegate = AppDelegate.getAppDelegate()
+		let managedContext = appDelegate.persistentContainer.viewContext
+		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Task")
+		
+		switch status {
+		case .new:
+			filter = TaskStatus.new.rawValue
+		case .inProcess:
+			filter = TaskStatus.inProcess.rawValue
+		case .done:
+			filter = TaskStatus.done.rawValue
+		case .undefined:
+			break
+		}
+		
+		let predicate = NSPredicate(format: "statusValue == %ld", filter)
+		fetchRequest.predicate = predicate
+		do {
+			if let tasks = try managedContext.fetch(fetchRequest) as? [Task] {
+				dataDisplayManager.setTasks(tasks)
+			} else {
+				print("Could not cast NSManagedObject to Task")
+				return
+			}
+		} catch let error {
+			print("Could not fetch. \(error)")
+		}
+		tasksTableView.reloadData()
+	}
+	
 	func fetchTasks() {
 	
-		guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-			print("Could not cast to AppDelegate")
-			return
-		}
+		let appDelegate = AppDelegate.getAppDelegate()
 		let managedContext = appDelegate.persistentContainer.viewContext
 		
 		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Task")

@@ -17,7 +17,7 @@ enum TaskStatus: Int16 {
 	var description: String {
 		switch self {
 		case .inProcess:
-			return "In procces".localized
+			return "In process".localized
 		case .done:
 			return "Done".localized
 		case .new:

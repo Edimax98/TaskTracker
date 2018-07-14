@@ -10,6 +10,7 @@ import Foundation
 
 enum DateFormat: CustomStringConvertible {
 	
+	case day
 	case date
 	case time
 	case fullDate
@@ -26,6 +27,8 @@ enum DateFormat: CustomStringConvertible {
 			return "yyyy.MM.dd HH:mm:ss zzz"
 		case .dateWithoutTimeZone:
 			return "MMM d, hh:mm"
+		case .day:
+			return "d"
 		}
 	}
 }
