@@ -16,7 +16,7 @@ class UrgentTasksViewController: UIViewController {
 	private var dataDisplayManager = TasksDataDisplayManager()
 	private var dateFormatter: DateFormatter = {
 		let df = DateFormatter()
-		df.dateFormat = DateFormat.day.description
+		df.dateFormat = DateFormat.dateWithoutTimeZone.description
 		return df
 	}()
 	
@@ -39,14 +39,39 @@ class UrgentTasksViewController: UIViewController {
 		self.title = "Urgent tasks".localized
 	}
 	
+	private func getBorderDates() -> (start: NSDate, end: NSDate)? {
+		
+		let todayStr = dateFormatter.string(from: Date())
+		guard let todayDate = dateFormatter.date(from: todayStr) else {
+			print("Could not get today date")
+			return nil
+		}
+		
+		guard let startDate = Calendar.current.date(byAdding: .day, value: -1, to: todayDate) as NSDate? else {
+			print("Could not get start date")
+			return nil
+		}
+		
+		guard let endDate = Calendar.current.date(byAdding: .day, value: 1, to: todayDate) as NSDate? else {
+			print("Could not get end date")
+			return nil
+		}
+		
+		return (startDate, endDate)
+	}
+	
 	private func fetchUrgentTasks() {
 		
 		let appDelegate = AppDelegate.getAppDelegate()
 		let managedContext = appDelegate.persistentContainer.viewContext
 		
+		guard let borderDate = getBorderDates() else {
+			print("Could not get border dates")
+			return
+		}
+		
+		let predicate = NSPredicate(format: "date > %@ AND date < %@", borderDate.start, borderDate.end)
 		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Task")
-		let filter = dateFormatter.string(from: Date())
-		let predicate = NSPredicate(format: "date == %@", filter)
 		fetchRequest.predicate = predicate
 		do {
 			if let tasks = try managedContext.fetch(fetchRequest) as? [Task] {
