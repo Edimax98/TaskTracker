@@ -11,6 +11,8 @@ import UIKit
 class TasksDataDisplayManager: NSObject {
 	
 	private var tasks = [Task]()
+	private var urgentTasks = [Task]()
+	private var isUrgentTask = false
 	private let dateFormatter: DateFormatter = {
 		let df = DateFormatter()
 		df.dateFormat = DateFormat.dateWithoutTimeZone.description
@@ -24,26 +26,52 @@ class TasksDataDisplayManager: NSObject {
 	func getTasks() -> [Task] {
 		return tasks
 	}
-}
-
-extension TasksDataDisplayManager: UITableViewDataSource {
 	
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return tasks.count
+	func setUrgentTasks(_ tasks: [Task]) {
+		isUrgentTask = true
+		self.urgentTasks = tasks
 	}
 	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		
-		let task = tasks[indexPath.row]
+	func getUrgentTasks() -> [Task] {
+		return self.urgentTasks
+	}
+	
+	private func configureTaskCell(with task: Task, for tableView: UITableView, at indexPath: IndexPath) -> TaskCell {
 		
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: TaskCell.identifier, for: indexPath) as? TaskCell else {
 			print("Could not deque cell with identifier - \(TaskCell.identifier)")
-			return UITableViewCell()
+			return TaskCell()
 		}
 		
 		cell.taskTitle.text = task.title
 		cell.taskStatus.text = task.status.description
 		cell.taskDate.text = dateFormatter.string(from: task.date)
+		
+		return cell
+	}
+}
+
+extension TasksDataDisplayManager: UITableViewDataSource {
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	
+		if isUrgentTask {
+			return urgentTasks.count
+		}
+		return tasks.count
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		
+		var cell = TaskCell()
+		
+		if isUrgentTask {
+			let urgentTask = urgentTasks[indexPath.row]
+			cell = configureTaskCell(with: urgentTask, for: tableView, at: indexPath)
+		} else {
+			let task = tasks[indexPath.row]
+			cell = configureTaskCell(with: task, for: tableView, at: indexPath)
+		}
 		
 		return cell
 	}
@@ -67,5 +95,9 @@ extension TasksDataDisplayManager: UITableViewDataSource {
 				print("Could not save \(error)")
 			}
 		}
+	}
+	
+	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		return !isUrgentTask
 	}
 }

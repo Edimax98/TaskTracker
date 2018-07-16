@@ -18,10 +18,21 @@
 		830CE61420F8D22300FC83FD /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 830CE61220F8D22300FC83FD /* TaskCell.xib */; };
 		830CE61620F8D5CB00FC83FD /* TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830CE61520F8D5CB00FC83FD /* TaskStatus.swift */; };
 		830CE61820F8D6BD00FC83FD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830CE61720F8D6BD00FC83FD /* Extensions.swift */; };
+		83109D5320FBDB10008467C5 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83109D5220FBDB10008467C5 /* DateTextField.swift */; };
+		83109D5B20FBDE31008467C5 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83109D5A20FBDE31008467C5 /* NotificationCenter.framework */; };
+		83109D5E20FBDE31008467C5 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83109D5D20FBDE31008467C5 /* TodayViewController.swift */; };
+		83109D6120FBDE31008467C5 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83109D5F20FBDE31008467C5 /* MainInterface.storyboard */; };
+		83109D6520FBDE31008467C5 /* TodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 83109D5820FBDE31008467C5 /* TodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		83109D6A20FBE08C008467C5 /* TaskTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 830CE5F820F8CB8B00FC83FD /* TaskTracker.xcdatamodeld */; };
 		834D2C2020F90CF400FBE120 /* DetailedTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D2C1F20F90CF400FBE120 /* DetailedTaskViewController.swift */; };
 		834D2C3020F9322000FBE120 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D2C2E20F9322000FBE120 /* Task+CoreDataClass.swift */; };
 		834D2C3120F9322000FBE120 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D2C2F20F9322000FBE120 /* Task+CoreDataProperties.swift */; };
 		834D2C3320F9538800FBE120 /* TaskViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D2C3220F9538800FBE120 /* TaskViewOutput.swift */; };
+		8352249220FC12FE00A66FDF /* PersistantContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8352249120FC12FE00A66FDF /* PersistantContainer.swift */; };
+		8352249320FC1BD500A66FDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 830CE5FB20F8CB8C00FC83FD /* Assets.xcassets */; };
+		8352249420FC1BD600A66FDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 830CE5FB20F8CB8C00FC83FD /* Assets.xcassets */; };
+		83A19B3A20FC37A80074860D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83A19B3820FC37A80074860D /* InfoPlist.strings */; };
+		83A19B3E20FC383A0074860D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83A19B4020FC383A0074860D /* Localizable.strings */; };
 		83CCC88E20FA3D9E00E81B37 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CCC88D20FA3D9E00E81B37 /* DateFormat.swift */; };
 		83CCC89820FABBFC00E81B37 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CCC89720FABBFC00E81B37 /* ShareViewController.swift */; };
 		83CCC89B20FABBFC00E81B37 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83CCC89920FABBFC00E81B37 /* MainInterface.storyboard */; };
@@ -30,6 +41,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		83109D6320FBDE31008467C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 830CE5E620F8CB8B00FC83FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83109D5720FBDE31008467C5;
+			remoteInfo = TodayExtension;
+		};
 		83CCC89D20FABBFC00E81B37 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 830CE5E620F8CB8B00FC83FD /* Project object */;
@@ -46,6 +64,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				83109D6520FBDE31008467C5 /* TodayExtension.appex in Embed App Extensions */,
 				83CCC89F20FABBFC00E81B37 /* TaskShare.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -67,10 +86,25 @@
 		830CE61220F8D22300FC83FD /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		830CE61520F8D5CB00FC83FD /* TaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatus.swift; sourceTree = "<group>"; };
 		830CE61720F8D6BD00FC83FD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		83109D5220FBDB10008467C5 /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
+		83109D5820FBDE31008467C5 /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		83109D5A20FBDE31008467C5 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		83109D5D20FBDE31008467C5 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		83109D6020FBDE31008467C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		83109D6220FBDE31008467C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		834D2C1F20F90CF400FBE120 /* DetailedTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTaskViewController.swift; sourceTree = "<group>"; };
 		834D2C2E20F9322000FBE120 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		834D2C2F20F9322000FBE120 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		834D2C3220F9538800FBE120 /* TaskViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewOutput.swift; sourceTree = "<group>"; };
+		8352249020FC0BB900A66FDF /* TaskTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TaskTracker.entitlements; sourceTree = "<group>"; };
+		8352249120FC12FE00A66FDF /* PersistantContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistantContainer.swift; sourceTree = "<group>"; };
+		8352249520FC1CEB00A66FDF /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayExtension.entitlements; sourceTree = "<group>"; };
+		83A19B2D20FC35FA0074860D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		83A19B2E20FC35FA0074860D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		83A19B2F20FC35FA0074860D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		83A19B3920FC37A80074860D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = TaskTracker/Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		83A19B3B20FC37AF0074860D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = TaskTracker/ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		83A19B3F20FC383A0074860D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		83CCC88D20FA3D9E00E81B37 /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		83CCC89520FABBFC00E81B37 /* TaskShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TaskShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		83CCC89720FABBFC00E81B37 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +121,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		83109D5520FBDE31008467C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83109D5B20FBDE31008467C5 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83CCC89220FABBFC00E81B37 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -100,8 +142,12 @@
 		830CE5E520F8CB8B00FC83FD = {
 			isa = PBXGroup;
 			children = (
+				83A19B4020FC383A0074860D /* Localizable.strings */,
+				83A19B3820FC37A80074860D /* InfoPlist.strings */,
 				830CE5F020F8CB8B00FC83FD /* TaskTracker */,
 				83CCC89620FABBFC00E81B37 /* TaskShare */,
+				83109D5C20FBDE31008467C5 /* TodayExtension */,
+				83109D5920FBDE31008467C5 /* Frameworks */,
 				830CE5EF20F8CB8B00FC83FD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,6 +157,7 @@
 			children = (
 				830CE5EE20F8CB8B00FC83FD /* TaskTracker.app */,
 				83CCC89520FABBFC00E81B37 /* TaskShare.appex */,
+				83109D5820FBDE31008467C5 /* TodayExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,6 +165,7 @@
 		830CE5F020F8CB8B00FC83FD /* TaskTracker */ = {
 			isa = PBXGroup;
 			children = (
+				8352249020FC0BB900A66FDF /* TaskTracker.entitlements */,
 				830CE61720F8D6BD00FC83FD /* Extensions.swift */,
 				830CE5F120F8CB8B00FC83FD /* AppDelegate.swift */,
 				83CCC8A620FAC0E500E81B37 /* UrgentTasks */,
@@ -171,10 +219,31 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		83109D5920FBDE31008467C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				83109D5A20FBDE31008467C5 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		83109D5C20FBDE31008467C5 /* TodayExtension */ = {
+			isa = PBXGroup;
+			children = (
+				8352249520FC1CEB00A66FDF /* TodayExtension.entitlements */,
+				83109D5D20FBDE31008467C5 /* TodayViewController.swift */,
+				83109D5F20FBDE31008467C5 /* MainInterface.storyboard */,
+				83109D6220FBDE31008467C5 /* Info.plist */,
+				8352249120FC12FE00A66FDF /* PersistantContainer.swift */,
+			);
+			path = TodayExtension;
+			sourceTree = "<group>";
+		};
 		834D2C2120F90D0100FBE120 /* DetailedTask */ = {
 			isa = PBXGroup;
 			children = (
 				834D2C1F20F90CF400FBE120 /* DetailedTaskViewController.swift */,
+				83109D5220FBDB10008467C5 /* DateTextField.swift */,
 			);
 			path = DetailedTask;
 			sourceTree = "<group>";
@@ -230,11 +299,29 @@
 			);
 			dependencies = (
 				83CCC89E20FABBFC00E81B37 /* PBXTargetDependency */,
+				83109D6420FBDE31008467C5 /* PBXTargetDependency */,
 			);
 			name = TaskTracker;
 			productName = TaskTracker;
 			productReference = 830CE5EE20F8CB8B00FC83FD /* TaskTracker.app */;
 			productType = "com.apple.product-type.application";
+		};
+		83109D5720FBDE31008467C5 /* TodayExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83109D6620FBDE31008467C5 /* Build configuration list for PBXNativeTarget "TodayExtension" */;
+			buildPhases = (
+				83109D5420FBDE31008467C5 /* Sources */,
+				83109D5520FBDE31008467C5 /* Frameworks */,
+				83109D5620FBDE31008467C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TodayExtension;
+			productName = TodayExtension;
+			productReference = 83109D5820FBDE31008467C5 /* TodayExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		83CCC89420FABBFC00E81B37 /* TaskShare */ = {
 			isa = PBXNativeTarget;
@@ -265,6 +352,19 @@
 				TargetAttributes = {
 					830CE5ED20F8CB8B00FC83FD = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					83109D5720FBDE31008467C5 = {
+						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					83CCC89420FABBFC00E81B37 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -278,6 +378,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 830CE5E520F8CB8B00FC83FD;
 			productRefGroup = 830CE5EF20F8CB8B00FC83FD /* Products */;
@@ -286,6 +387,7 @@
 			targets = (
 				830CE5ED20F8CB8B00FC83FD /* TaskTracker */,
 				83CCC89420FABBFC00E81B37 /* TaskShare */,
+				83109D5720FBDE31008467C5 /* TodayExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -296,9 +398,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				830CE61420F8D22300FC83FD /* TaskCell.xib in Resources */,
+				83A19B3E20FC383A0074860D /* Localizable.strings in Resources */,
 				830CE5FF20F8CB8C00FC83FD /* LaunchScreen.storyboard in Resources */,
 				830CE5FC20F8CB8C00FC83FD /* Assets.xcassets in Resources */,
 				830CE5F720F8CB8B00FC83FD /* Main.storyboard in Resources */,
+				83A19B3A20FC37A80074860D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83109D5620FBDE31008467C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8352249420FC1BD600A66FDF /* Assets.xcassets in Resources */,
+				83109D6120FBDE31008467C5 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +419,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8352249320FC1BD500A66FDF /* Assets.xcassets in Resources */,
 				83CCC89B20FABBFC00E81B37 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +434,7 @@
 				830CE60E20F8D18000FC83FD /* TasksDataDisplayManager.swift in Sources */,
 				834D2C3320F9538800FBE120 /* TaskViewOutput.swift in Sources */,
 				830CE61820F8D6BD00FC83FD /* Extensions.swift in Sources */,
+				83109D5320FBDB10008467C5 /* DateTextField.swift in Sources */,
 				830CE61320F8D22300FC83FD /* TaskCell.swift in Sources */,
 				830CE61620F8D5CB00FC83FD /* TaskStatus.swift in Sources */,
 				83CCC88E20FA3D9E00E81B37 /* DateFormat.swift in Sources */,
@@ -330,6 +445,16 @@
 				834D2C3020F9322000FBE120 /* Task+CoreDataClass.swift in Sources */,
 				834D2C2020F90CF400FBE120 /* DetailedTaskViewController.swift in Sources */,
 				83CCC8A520FAC0E000E81B37 /* UrgentTasksViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83109D5420FBDE31008467C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8352249220FC12FE00A66FDF /* PersistantContainer.swift in Sources */,
+				83109D5E20FBDE31008467C5 /* TodayViewController.swift in Sources */,
+				83109D6A20FBE08C008467C5 /* TaskTracker.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +469,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		83109D6420FBDE31008467C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83109D5720FBDE31008467C5 /* TodayExtension */;
+			targetProxy = 83109D6320FBDE31008467C5 /* PBXContainerItemProxy */;
+		};
 		83CCC89E20FABBFC00E81B37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 83CCC89420FABBFC00E81B37 /* TaskShare */;
@@ -356,6 +486,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				830CE5F620F8CB8B00FC83FD /* Base */,
+				83A19B2D20FC35FA0074860D /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -368,10 +499,37 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		83109D5F20FBDE31008467C5 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83109D6020FBDE31008467C5 /* Base */,
+				83A19B2F20FC35FA0074860D /* ru */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		83A19B3820FC37A80074860D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83A19B3920FC37A80074860D /* Base */,
+				83A19B3B20FC37AF0074860D /* ru */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		83A19B4020FC383A0074860D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83A19B3F20FC383A0074860D /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		83CCC89920FABBFC00E81B37 /* MainInterface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				83CCC89A20FABBFC00E81B37 /* Base */,
+				83A19B2E20FC35FA0074860D /* ru */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -383,6 +541,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -443,6 +602,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -498,6 +658,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TaskTracker/TaskTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M32M9JNSSA;
 				INFOPLIST_FILE = TaskTracker/Info.plist;
@@ -517,6 +678,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TaskTracker/TaskTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M32M9JNSSA;
 				INFOPLIST_FILE = TaskTracker/Info.plist;
@@ -526,6 +688,48 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ed-cop.TaskTracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		83109D6720FBDE31008467C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_ENTITLEMENTS = TodayExtension/TodayExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M32M9JNSSA;
+				INFOPLIST_FILE = TodayExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ed-cop.TaskTracker.TodayExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		83109D6820FBDE31008467C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_ENTITLEMENTS = TodayExtension/TodayExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M32M9JNSSA;
+				INFOPLIST_FILE = TodayExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ed-cop.TaskTracker.TodayExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -579,7 +783,7 @@
 				830CE60220F8CB8C00FC83FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		830CE60320F8CB8C00FC83FD /* Build configuration list for PBXNativeTarget "TaskTracker" */ = {
 			isa = XCConfigurationList;
@@ -588,7 +792,16 @@
 				830CE60520F8CB8C00FC83FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
+		};
+		83109D6620FBDE31008467C5 /* Build configuration list for PBXNativeTarget "TodayExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83109D6720FBDE31008467C5 /* Debug */,
+				83109D6820FBDE31008467C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		83CCC8A020FABBFC00E81B37 /* Build configuration list for PBXNativeTarget "TaskShare" */ = {
 			isa = XCConfigurationList;
@@ -597,7 +810,7 @@
 				83CCC8A220FABBFC00E81B37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

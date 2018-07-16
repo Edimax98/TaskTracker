@@ -11,13 +11,14 @@ import CoreData
 
 class DetailedTaskViewController: UITableViewController {
 
-	@IBOutlet weak var taskTitleTextField: UITextField!
-	@IBOutlet weak var taskDateTextField: UITextField!
-	@IBOutlet weak var taskNoteTextField: UITextField!
+	@IBOutlet weak var taskTitleTextView: UITextView!
+	@IBOutlet weak var taskDateTextField: DateTextField!
+	@IBOutlet weak var taskNoteTextView: UITextView!
 	@IBOutlet weak var changeTaskStatusButton: UIButton!
 	
 	private var selectedTask: Task?
 	private var wasAnythingChanged = false
+	private var isThereAnyErorrs = false
 	
 	private let dateFormatter: DateFormatter = {
 		let df = DateFormatter()
@@ -42,7 +43,10 @@ class DetailedTaskViewController: UITableViewController {
 		} else {
 			saveTask()
 		}
-		dismiss(animated: true, completion: nil)
+		
+		if !isThereAnyErorrs {
+			dismiss(animated: true, completion: nil)
+		}
 	}
 	
 	@IBAction func dateTextFieldEditingBegan(_ sender: UITextField) {
@@ -50,6 +54,7 @@ class DetailedTaskViewController: UITableViewController {
 		let datePickerView: UIDatePicker = UIDatePicker()
 		
 		datePickerView.datePickerMode = .dateAndTime
+		datePickerView.minimumDate = Date()
 		sender.inputView = datePickerView
 		datePickerView.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: .valueChanged)
 	}
@@ -60,7 +65,12 @@ class DetailedTaskViewController: UITableViewController {
 	
 	@IBAction func changeTaskStatusButtonPressed(_ sender: Any) {
 		changeTaskStatus()
-		dismiss(animated: true, completion: nil)
+		if isTaskDoneNotOnTime(selectedTask!.date) {
+			isThereAnyErorrs = true
+			showWarningAlert(with: "Task must have be done earlier".localized, message: nil)
+		} else {
+			dismiss(animated: true, completion: nil)
+		}
 	}
 
 	@IBAction func textFieldChanged(_ sender: Any) {
@@ -84,14 +94,14 @@ class DetailedTaskViewController: UITableViewController {
 			changeTaskStatusButton.isHidden = true
 		}
 		
-		taskDateTextField.placeholder = "Enter a date".localized
-		taskNoteTextField.placeholder = "Enter a note for task".localized
-		taskTitleTextField.placeholder = "Enter a title".localized
-		
 		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
 		view.addGestureRecognizer(tapGesture)
 		
 		fillTextFields(with: selectedTask)
+	}
+	
+	private func isTaskDoneNotOnTime(_ taskDate: Date) -> Bool {
+		return taskDate < Date()
 	}
 	
 	private func changeTaskStatus() {
@@ -112,8 +122,9 @@ class DetailedTaskViewController: UITableViewController {
 		
 		do {
 			try managedContext.save()
-		} catch let error {
-			print("Could not save \(error)")
+		} catch {
+			showErrorAlert(with: "Error".localized, message: "Could not save".localized)
+			managedContext.rollback()
 		}
 	}
 	
@@ -138,13 +149,13 @@ class DetailedTaskViewController: UITableViewController {
 			return
 		}
 		
-		taskTitleTextField.text = task.title
+		taskTitleTextView.text = task.title
 		taskDateTextField.text = dateFormatter.string(from: task.date)
 		
 		if let taskNote = task.note {
-			taskNoteTextField.text = taskNote
+			taskNoteTextView.text = taskNote
 		} else {
-			taskNoteTextField.text = ""
+			taskNoteTextView.text = ""
 		}
 	}
 	
@@ -153,7 +164,7 @@ class DetailedTaskViewController: UITableViewController {
 	}
 	
 	private func areRequiredTextFieldsFilled() -> Bool {
-		return taskDateTextField.text != "" && taskTitleTextField.text != ""
+		return taskDateTextField.text != "" && taskTitleTextView.text != ""
 	}
 	
 	private func saveTask() {
@@ -177,15 +188,22 @@ class DetailedTaskViewController: UITableViewController {
 			return
 		}
 		
-		task.title = taskTitleTextField.text!
-		task.note = taskNoteTextField.text!
+		task.title = taskTitleTextView.text!
+		task.note = taskNoteTextView.text!
 		task.status = .new
 		task.date = formattedDate
 
 		do {
 			try managedContext.save()
-		} catch let error {
-			print("Could not save. \(error)")
+			isThereAnyErorrs = false
+		} catch let error as NSError {
+			isThereAnyErorrs = true
+			if error.code == NSValidationStringTooLongError && error.domain == NSCocoaErrorDomain {
+				showErrorAlert(with: "Too much symbols".localized, message: "Max symbols for note - 300. Max symbols for title - 100".localized)
+			} else {
+				showErrorAlert(with: "Error".localized, message: "Could not save".localized)
+			}
+			managedContext.rollback()
 		}
 	}
 	
@@ -200,19 +218,23 @@ class DetailedTaskViewController: UITableViewController {
 			return
 		}
 		
-		task.title = taskTitleTextField.text!
+		task.title = taskTitleTextView.text!
 		task.date = formattedDate
-		task.note = taskNoteTextField.text!
+		task.note = taskNoteTextView.text!
 		
 		do {
 			try managedContext.save()
-		} catch let error {
-			print("Could not save. \(error)")
+			isThereAnyErorrs = false
+		} catch let error as NSError {
+			isThereAnyErorrs = true
+			if error.code == NSValidationStringTooLongError && error.domain == NSCocoaErrorDomain {
+				showErrorAlert(with: "Too much symbols".localized, message: "Max symbols for note - 300. Max symbols for title - 100".localized)
+			} else {
+				showErrorAlert(with: "Error".localized, message: "Could not save".localized)
+			}
+			managedContext.rollback()
 		}
-		dismiss(animated: true, completion: nil)
 	}
-	
-
 }
 
 // MARK: - TaskViewOutput

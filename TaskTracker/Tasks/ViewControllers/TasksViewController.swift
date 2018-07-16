@@ -25,7 +25,6 @@ class TasksViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		fetchTasks()
-		tasksTableView.reloadData()
 	}
 	
 	private func setupView() {
@@ -51,11 +50,15 @@ class TasksViewController: UIViewController {
 		let filterByDoneStatusAction = UIAlertAction(title: "Completed tasks".localized, style: .default) { (action) in
 			self.filterTask(by: .done)
 		}
+		let cancelFiltrationAction = UIAlertAction(title: "All tasks".localized, style: .default) { (action) in
+			self.fetchTasks()
+		}
 		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 		
 		filterActionSheet.addAction(filterByNewStatusAction)
 		filterActionSheet.addAction(filterByInProcessStatusAction)
 		filterActionSheet.addAction(filterByDoneStatusAction)
+		filterActionSheet.addAction(cancelFiltrationAction)
 		filterActionSheet.addAction(cancelAction)
 		
 		self.present(filterActionSheet, animated: true, completion: nil)
@@ -110,6 +113,7 @@ class TasksViewController: UIViewController {
 		} catch let error {
 			print("Could not fetch. \(error)")
 		}
+		tasksTableView.reloadData()
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

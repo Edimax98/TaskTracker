@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  TaskTracker
+
+  Created by Даниил Смирнов on 16.07.2018.
+  Copyright © 2018 Даниил Смирнов. All rights reserved.
+*/
+
+"Tasks" = "Задачи";
+"Urgent tasks" = "Срочные задачи";
+"Choose status of task you want to filter" = "Выберите статус, по которому вы хотите отфильтровать";
+"All tasks" = "Все задачи";
+"New tasks" = "Новые задачи";
+"Tasks in process" = "Задачи в процессе";
+"Completed tasks" = "Завершенные задачи";
+"Cancel" = "Отмена";
+"Enter title and date" = "Введите заголовок и дату";
+"Task must have be done earlier" = "Задача должна была быть завершена ранее";
+"Could not save" = "Невозможно сохранить";
+"Start" = "Начать";
+"Finish" = "Завершить";
+"Too much symbols" = "Слишком много символов";
+"Error" = "Ошибка";
+"Max symbols for note - 300. Max symbols for title - 100" = "Максимум символов для заметки - 300. Максимум символов для заголовка - 100";
+"New" = "Новая";
+"In process" = " В процессе";
+"Done" = "Завершена";

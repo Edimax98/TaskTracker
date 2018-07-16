@@ -1,0 +1,21 @@
+
+/* Class = "UITableViewSection"; headerTitle = "Note"; ObjectID = "0IS-Q6-KrM"; */
+"0IS-Q6-KrM.headerTitle" = "Заметка";
+
+/* Class = "UITableViewSection"; headerTitle = "Title"; ObjectID = "3JT-Ys-geB"; */
+"3JT-Ys-geB.headerTitle" = "Заголовок";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "3as-Tk-LbQ"; */
+"3as-Tk-LbQ.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "A2e-ek-sV4"; */
+"A2e-ek-sV4.normalTitle" = "Button";
+
+/* Class = "UITabBarItem"; title = "Urgent tasks"; ObjectID = "S87-9O-xbQ"; */
+"S87-9O-xbQ.title" = "Срочные задания";
+
+/* Class = "UITableViewSection"; headerTitle = "Date"; ObjectID = "b7z-Um-44c"; */
+"b7z-Um-44c.headerTitle" = "Дата";
+
+/* Class = "UITabBarItem"; title = "All tasks"; ObjectID = "nw0-Ed-z3q"; */
+"nw0-Ed-z3q.title" = "Все задачи";

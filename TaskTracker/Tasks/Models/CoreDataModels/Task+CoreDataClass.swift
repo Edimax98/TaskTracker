@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 @objc(Task)
-public class Task: NSManagedObject {
+class Task: NSManagedObject {
 	
 	@NSManaged var title: String
 	@NSManaged var date: Date

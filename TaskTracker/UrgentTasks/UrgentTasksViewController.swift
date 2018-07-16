@@ -12,7 +12,9 @@ import CoreData
 class UrgentTasksViewController: UIViewController {
 
 	@IBOutlet weak var urgentTasksTableView: UITableView!
+	var output: TaskViewOutput?
 	
+	private var selectedTask: Task?
 	private var dataDisplayManager = TasksDataDisplayManager()
 	private var dateFormatter: DateFormatter = {
 		let df = DateFormatter()
@@ -60,6 +62,23 @@ class UrgentTasksViewController: UIViewController {
 		return (startDate, endDate)
 	}
 	
+	private func saveUrgentTaskToUserDefaults(_ task: Task) {
+		
+		guard let userDefaults = UserDefaults(suiteName: "group.com.taskTracker") else {
+			print("Could not save to user defaults")
+			return
+		}
+		
+		userDefaults.set(task.title, forKey: "urgentTaskTitle")
+		userDefaults.set(task.date, forKey: "urgentTaskDate")
+	}
+	
+	private func getClosestUrgentTask(_ tasks: [Task]) -> Task {
+		return tasks.min(by: { (prev, next) -> Bool in
+			prev.date < next.date
+		})!
+	}
+	
 	private func fetchUrgentTasks() {
 		
 		let appDelegate = AppDelegate.getAppDelegate()
@@ -75,7 +94,9 @@ class UrgentTasksViewController: UIViewController {
 		fetchRequest.predicate = predicate
 		do {
 			if let tasks = try managedContext.fetch(fetchRequest) as? [Task] {
-				dataDisplayManager.setTasks(tasks)
+				dataDisplayManager.setUrgentTasks(tasks)
+				let closestTask = getClosestUrgentTask(tasks)
+				saveUrgentTaskToUserDefaults(closestTask)
 			} else {
 				print("Could not cast NSManagedObject to Task")
 				return
@@ -84,9 +105,39 @@ class UrgentTasksViewController: UIViewController {
 			print("Could not fetch. \(error)")
 		}
 	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		
+		if segue.identifier == "urgentTaskSelected" {
+			
+			guard let navigationVc = segue.destination as? UINavigationController else {
+				print("Error during segue")
+				return
+			}
+			
+			guard let destinationVc =  navigationVc.viewControllers.first as? DetailedTaskViewController else {
+				print("Could not cast to DetailedTaskViewController or its nil")
+				return
+			}
+			
+			self.output = destinationVc
+		}
+	}
 }
 
 // MARK: - UITableViewDelegate
 extension UrgentTasksViewController: UITableViewDelegate {
 	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		let tasks = dataDisplayManager.getUrgentTasks()
+		let selectedTask = tasks[indexPath.row]
+		
+		performSegue(withIdentifier: "urgentTaskSelected", sender: self)
+		output?.sendSelectedTask(selectedTask)
+	}
 }
+
+
+
+

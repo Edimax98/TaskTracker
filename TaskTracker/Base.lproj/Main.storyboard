@@ -95,21 +95,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2dt-Rb-2M0">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
-                                                    <connections>
-                                                        <action selector="textFieldChanged:" destination="ZQV-mi-j4k" eventType="editingChanged" id="Sc1-a1-CjK"/>
-                                                    </connections>
-                                                </textField>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ojb-yp-aIH">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="2dt-Rb-2M0" firstAttribute="leading" secondItem="oNK-vb-6wH" secondAttribute="leading" id="6zS-x3-oyB"/>
-                                                <constraint firstItem="2dt-Rb-2M0" firstAttribute="top" secondItem="oNK-vb-6wH" secondAttribute="top" id="asr-pJ-36G"/>
-                                                <constraint firstAttribute="bottom" secondItem="2dt-Rb-2M0" secondAttribute="bottom" id="dPn-d7-XIw"/>
-                                                <constraint firstAttribute="trailing" secondItem="2dt-Rb-2M0" secondAttribute="trailing" id="lUd-Rh-SBt"/>
+                                                <constraint firstAttribute="bottom" secondItem="ojb-yp-aIH" secondAttribute="bottom" id="MEd-Wb-kol"/>
+                                                <constraint firstItem="ojb-yp-aIH" firstAttribute="top" secondItem="oNK-vb-6wH" secondAttribute="top" id="ipK-Lt-CMi"/>
+                                                <constraint firstItem="ojb-yp-aIH" firstAttribute="leading" secondItem="oNK-vb-6wH" secondAttribute="leading" id="k8L-FA-rtY"/>
+                                                <constraint firstAttribute="trailing" secondItem="ojb-yp-aIH" secondAttribute="trailing" id="w5L-gX-ohP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -124,7 +121,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A5e-iD-5f0">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A5e-iD-5f0" customClass="DateTextField" customModule="TaskTracker" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
@@ -154,21 +151,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="135.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vsb-K2-UHB">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TD2-he-plK">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="136"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
-                                                    <connections>
-                                                        <action selector="textFieldChanged:" destination="ZQV-mi-j4k" eventType="editingChanged" id="Dyf-JH-PbC"/>
-                                                    </connections>
-                                                </textField>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Vsb-K2-UHB" secondAttribute="bottom" id="2j5-kr-nF2"/>
-                                                <constraint firstItem="Vsb-K2-UHB" firstAttribute="leading" secondItem="r0V-dL-egJ" secondAttribute="leading" id="gZ5-wt-h6P"/>
-                                                <constraint firstItem="Vsb-K2-UHB" firstAttribute="top" secondItem="r0V-dL-egJ" secondAttribute="top" id="o16-rb-iuZ"/>
-                                                <constraint firstAttribute="trailing" secondItem="Vsb-K2-UHB" secondAttribute="trailing" id="vNf-VN-TkE"/>
+                                                <constraint firstItem="TD2-he-plK" firstAttribute="leading" secondItem="r0V-dL-egJ" secondAttribute="leading" id="Ode-iH-fcC"/>
+                                                <constraint firstAttribute="bottom" secondItem="TD2-he-plK" secondAttribute="bottom" id="k3i-B1-eHj"/>
+                                                <constraint firstItem="TD2-he-plK" firstAttribute="top" secondItem="r0V-dL-egJ" secondAttribute="top" id="w5l-kP-hfY"/>
+                                                <constraint firstAttribute="trailing" secondItem="TD2-he-plK" secondAttribute="trailing" id="yMm-7x-xzi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -195,18 +189,17 @@
                     <connections>
                         <outlet property="changeTaskStatusButton" destination="A2e-ek-sV4" id="edH-bo-USE"/>
                         <outlet property="taskDateTextField" destination="A5e-iD-5f0" id="6TG-Zo-hT4"/>
-                        <outlet property="taskNoteTextField" destination="Vsb-K2-UHB" id="6pF-kR-Rjz"/>
-                        <outlet property="taskTitleTextField" destination="2dt-Rb-2M0" id="LyN-o3-ptG"/>
+                        <outlet property="taskNoteTextView" destination="TD2-he-plK" id="o7X-Gf-ICQ"/>
+                        <outlet property="taskTitleTextView" destination="ojb-yp-aIH" id="zn8-tc-kCf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="akt-6W-FYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5242.3999999999996" y="80.50974512743629"/>
+            <point key="canvasLocation" x="4813.6000000000004" y="293.70314842578711"/>
         </scene>
         <!--All tasks-->
         <scene sceneID="zgk-QI-r5y">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Mf-9L-nIr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2PC-We-5Ng" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="All tasks" image="all_tasks" id="nw0-Ed-z3q"/>
                     <toolbarItems/>
@@ -219,6 +212,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="XhT-Kq-J5G"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Mf-9L-nIr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1580" y="-77.811094452773617"/>
         </scene>
@@ -233,6 +227,19 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LLv-te-gFY">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qPO-TB-Tzt" customClass="TaskCell" customModule="TaskTracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qPO-TB-Tzt" id="U6J-aW-OdM">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="4iN-hY-Hxw" kind="presentation" identifier="urgentTaskSelected" id="BLW-Mp-cPW"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -251,7 +258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mxW-uo-uyS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2680.8000000000002" y="715.59220389805103"/>
+            <point key="canvasLocation" x="2609" y="716"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ne6-5Z-j1A">
@@ -269,7 +276,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zw5-iq-pG9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4420" y="80.50974512743629"/>
+            <point key="canvasLocation" x="3948" y="294"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vyJ-ZG-4fU">
@@ -277,6 +284,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="3gD-RD-77n" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Prf-De-HV6">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -315,6 +323,6 @@
         <image name="urgent_tasks" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YTG-Mp-hEi"/>
+        <segue reference="BLW-Mp-cPW"/>
     </inferredMetricsTieBreakers>
 </document>
